@@ -1,0 +1,30 @@
+version: '3.9'
+
+services:
+
+  # ── Backend API (Node.js + SQLite) ──
+  backend:
+    build: ./backend
+    container_name: hillside-backend
+    ports:
+      - "3000:3000"
+    environment:
+      - PORT=3000
+      - NODE_ENV=production
+    volumes:
+      - sqlite_data:/app/data     # ← persists the SQLite .db file
+    restart: unless-stopped
+
+  # ── Frontend (nginx) ──
+  frontend:
+    build: ./frontend
+    container_name: hillside-frontend
+    ports:
+      - "8080:80"
+    depends_on:
+      - backend
+    restart: unless-stopped
+
+# Named volume — SQLite DB survives container restarts
+volumes:
+  sqlite_data:
