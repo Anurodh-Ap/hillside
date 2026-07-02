@@ -7,7 +7,7 @@ services:
     build: ./backend
     container_name: hillside-backend
     ports:
-      - "3000:3000"
+      - "3000:4267"
     environment:
       - PORT=3000
       - NODE_ENV=production
@@ -20,7 +20,7 @@ services:
     build: ./frontend
     container_name: hillside-frontend
     ports:
-      - "8080:80"
+      - "8080:6525"
     depends_on:
       - backend
     restart: unless-stopped

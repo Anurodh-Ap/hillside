@@ -16,6 +16,6 @@ COPY server.js ./
 # Create data directory for SQLite file
 RUN mkdir -p /app/data
 
-EXPOSE 3000
+EXPOSE 4267
 
 CMD ["node", "server.js"]
