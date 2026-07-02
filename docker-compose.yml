@@ -7,9 +7,9 @@ services:
     build: ./backend
     container_name: hillside-backend
     ports:
-      - "3000:4267"
+      - "3563:4267"
     environment:
-      - PORT=3000
+      - PORT=3563
       - NODE_ENV=production
     volumes:
       - sqlite_data:/app/data     # ← persists the SQLite .db file
@@ -20,7 +20,7 @@ services:
     build: ./frontend
     container_name: hillside-frontend
     ports:
-      - "8080:6525"
+      - "3645:6525"
     depends_on:
       - backend
     restart: unless-stopped
